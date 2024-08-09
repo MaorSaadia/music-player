@@ -1,4 +1,4 @@
-import { defaultStyles } from '@/constants/styles'
+import { defaultStyles } from '@/styles'
 import { View } from 'react-native'
 
 const FavoritesScreen = () => {
