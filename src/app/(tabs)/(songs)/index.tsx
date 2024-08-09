@@ -4,7 +4,7 @@ import { ScrollView, View } from 'react-native'
 
 import library from '@/assets/data/library.json'
 import TrackLists from '@/components/TrackLists'
-import { screenPadding } from '@/constants/tokens'
+import { colors, screenPadding } from '@/constants/tokens'
 import { trackTitleFilter } from '@/helpers/filter'
 import { defaultStyles } from '@/styles'
 
@@ -12,6 +12,10 @@ const SongsScreen = () => {
 	const { search } = useNavigationSearch({
 		searchBarOptions: {
 			placeholder: 'Find in songs',
+			headerIconColor: colors.maximumTrackTintColor,
+			barTintColor: colors.maximumTrackTintColor,
+			hintTextColor: colors.maximumTrackTintColor,
+			textColor: colors.text,
 		},
 	})
 
