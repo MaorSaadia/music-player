@@ -1,7 +1,9 @@
 import React from 'react'
-import { FlatList, FlatListProps, StyleSheet, View } from 'react-native'
+import { FlatList, FlatListProps, StyleSheet, Text, View } from 'react-native'
 
+import { unknownTrackImageUri } from '@/constants/images'
 import { utilsStyles } from '@/styles'
+import FastImage from 'react-native-fast-image'
 import TrackPlayer, { Track } from 'react-native-track-player'
 import TrackListItem from './TrackListItem'
 
@@ -27,6 +29,15 @@ const TrackLists = ({ tracks, ...flatlistProps }: TracksListProps) => {
 			contentContainerStyle={{ paddingTop: 10, paddingBottom: 128 }}
 			ListFooterComponent={ItemDivider}
 			ItemSeparatorComponent={ItemDivider}
+			ListEmptyComponent={
+				<View style={utilsStyles.emptyContentText}>
+					<Text>No Song Found</Text>
+					<FastImage
+						source={{ uri: unknownTrackImageUri, priority: FastImage.priority.normal }}
+						style={utilsStyles.emptyContentImage}
+					/>
+				</View>
+			}
 			renderItem={({ item: track }) => (
 				<TrackListItem track={track} onTrackSelect={handleTrackSelect} />
 			)}
