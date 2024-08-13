@@ -1,7 +1,8 @@
 import { Stack } from 'expo-router'
-import { View } from 'react-native'
+import { Platform, View } from 'react-native'
 
-import { StackScreenWithSearchBar } from '@/constants/layout'
+import CustomHeader from '@/components/CustomHeader'
+import { colors } from '@/constants/tokens'
 import { defaultStyles } from '@/styles'
 
 const FavoritesScreenLayout = () => {
@@ -11,9 +12,17 @@ const FavoritesScreenLayout = () => {
 				<Stack.Screen
 					name="index"
 					options={{
-						...StackScreenWithSearchBar,
-
-						headerTitle: 'Favorites',
+						headerTitle: () =>
+							Platform.OS === 'android' ? <CustomHeader title="Favorites" /> : 'Favorites',
+						headerStyle: {
+							backgroundColor: colors.background,
+						},
+						headerTitleStyle: {
+							color: colors.text,
+						},
+						headerTintColor: colors.text,
+						headerTransparent: Platform.OS === 'ios',
+						headerShadowVisible: false,
 					}}
 				/>
 			</Stack>
